@@ -121,6 +121,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MONGO_DATABASE_NAME = 'lt_chat'
-MONGO_HOST = '127.0.0.1'
+MONGO_HOST = "ltdb"
 MONGO_PORT = 27017
-connect(MONGO_DATABASE_NAME, host=MONGO_HOST, port=MONGO_PORT)
+connect(host=MONGO_HOST)
