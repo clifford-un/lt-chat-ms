@@ -2,7 +2,6 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
 from .models import Chat
 from .serializers import ChatSerializer
 
@@ -20,4 +19,11 @@ class ChatView(APIView):
             chat = Chat(**data)
             chat.save()
             response = serializer.data
-            return Response(response, status=status.HTTP_200_OK)
+            return Response(response, status=status.HTTP_201_CREATED)
+
+class ChatViewDetail(APIView):
+
+    def get(self, request,id):
+        serializer = ChatSerializer(Chat.objects.get(id=id))
+        response = {"Chats": serializer.data}
+        return Response(response, status=status.HTTP_200_OK)
