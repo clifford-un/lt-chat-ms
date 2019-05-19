@@ -92,8 +92,8 @@ paths:
           required: true
           type: string
       responses:
-        '200':
-          description: Ok
+        '204':
+          description: No content
         '404':
           description: Not Found
           schema:
