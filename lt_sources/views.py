@@ -16,7 +16,7 @@ class ChatView(APIView):
 
     def get(self, request, format=None):
         serializer = ChatSerializer(self.get_object(), many=True)
-        response = {"Chats": serializer.data}
+        response = serializer.data
         return Response(response, status=status.HTTP_200_OK)
 
     def post(self, request, format=None):
@@ -38,7 +38,7 @@ class ChatViewDetail(APIView):
 
     def get(self, request,id, format=None):
         serializer = ChatSerializer(self.get_object(id))
-        response = {"Chats": serializer.data}
+        response = serializer.data
         return Response(response, status=status.HTTP_200_OK)
 
     def delete(self, request, id, format=None):
