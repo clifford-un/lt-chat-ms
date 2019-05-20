@@ -34,8 +34,7 @@ paths:
             $ref: '#/definitions/ErrorModel'
         '500':
           description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorModel'
+
     get:
       summary: Returns all chats
       operationId: getAllChats
@@ -46,8 +45,7 @@ paths:
             $ref: '#/definitions/ChatsList'
         '500':
           description: Internal Server Error
-          schema:
-            $ref: '#/definitions/ErrorModel'
+
 
   /chats/{id}:
     get:
@@ -70,8 +68,7 @@ paths:
             $ref: '#/definitions/ErrorModel'
         '500':
           description: unexpected error
-          schema:
-            $ref: '#/definitions/ErrorModel'
+
 
 
     delete:
@@ -90,10 +87,10 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/ErrorModel'
+
         '500':
           description: unexpected error
-          schema:
-            $ref: '#/definitions/ErrorModel'
+
 
 definitions:
 
@@ -141,10 +138,9 @@ definitions:
   ErrorModel:
     type: object
     required:
-      - message
-      - code
+      - detail
     properties:
-      message:
+      detail:
         type: string
-      code:
-        type: number
+
+
