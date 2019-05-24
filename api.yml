@@ -1,0 +1,141 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Microservice for Chats
+  description: Python + MongoDB
+  license:
+    name: Kiwi Platform
+host: 192.168.99.101:8000
+basePath: /chats
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /chats/:
+    post:
+      summary: Create a new chat
+      operationId: createChat
+      parameters:
+        - name: chat
+          in: body
+          required: true
+          description: Chat Object
+          schema:
+            $ref: '#/definitions/ChatInput'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+
+    get:
+      summary: Returns test string
+      operationId: getAllChats
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/ChatTest'
+        '500':
+          description: Internal Server Error
+
+
+  /chats/{chat_room_id}/:
+    get:
+      summary: Returns a chat with the given chat_room_id
+      operationId: getCourseById
+      parameters:
+        - name: chat_room_id
+          in: path
+          description: The id of the hat to be returned
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Chat'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+
+
+  /chats/{id}:
+    delete:
+      summary: Deletes a chat with the given id
+      operationId: deleteChat
+      parameters:
+        - name: id
+          in: path
+          description: The id of the chat to be deleted
+          required: true
+          type: string
+      responses:
+        '204':
+          description: No content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+        '500':
+          description: unexpected error
+
+
+definitions:
+
+  # Chats
+  Chat:
+    type: object
+    properties:
+      id:
+        type: string
+      chat_user_origin:
+        type: integer
+      chat_room_id:
+        type: integer
+      chat_text:
+        type: string
+      chat_hidden:
+        type: boolean
+      chat_date_stamp:
+        type: string
+
+  ChatInput:
+    type: object
+    properties:
+      chat_user_origin:
+        type: integer
+      chat_room_id:
+        type: integer
+      chat_text:
+        type: string
+
+  
+  ChatTest:
+    type: object
+    properties:
+      test:
+        type: string
+
+
+# Errors
+  ErrorModel:
+    type: object
+    required:
+      - detail
+    properties:
+      detail:
+        type: string
+
+

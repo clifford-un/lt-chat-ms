@@ -1,0 +1,15 @@
+version: '2.1'
+
+services:
+    ltdb:
+      image: mongo:4
+      ports:
+        - "27017:27017"
+    web:
+      build: .
+      command: python manage.py runserver 0:8000
+
+      ports:
+        - "8000:8000"
+      links:
+        - ltdb
