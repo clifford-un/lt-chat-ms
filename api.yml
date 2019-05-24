@@ -36,23 +36,23 @@ paths:
           description: Internal Server Error
 
     get:
-      summary: Returns all chats
+      summary: Returns test string
       operationId: getAllChats
       responses:
         '200':
           description: Ok
           schema:
-            $ref: '#/definitions/ChatsList'
+            $ref: '#/definitions/ChatTest'
         '500':
           description: Internal Server Error
 
 
-  /chats/{id}:
+  /chats/{chat_room_id}/:
     get:
-      summary: Returns a chat with the given id
+      summary: Returns a chat with the given chat_room_id
       operationId: getCourseById
       parameters:
-        - name: id
+        - name: chat_room_id
           in: path
           description: The id of the hat to be returned
           required: true
@@ -70,7 +70,7 @@ paths:
           description: unexpected error
 
 
-
+  /chats/{id}:
     delete:
       summary: Deletes a chat with the given id
       operationId: deleteChat
@@ -94,7 +94,7 @@ paths:
 
 definitions:
 
-  # Courses
+  # Chats
   Chat:
     type: object
     properties:
@@ -121,18 +121,13 @@ definitions:
       chat_text:
         type: string
 
-  ChatsList:
+  
+  ChatTest:
     type: object
-    required:
-      - total
-      - list
     properties:
-      total:
-        type: number
-      list:
-        type: array
-        items:
-          $ref: '#/definitions/Chat'
+      test:
+        type: string
+
 
 # Errors
   ErrorModel:
