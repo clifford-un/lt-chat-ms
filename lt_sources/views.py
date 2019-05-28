@@ -9,7 +9,7 @@ from .serializers import ChatSerializer
 class ChatView(APIView):
 
     def get(self, request, format=None):
-        response = "test by Dia Kurosawa"
+        response = {'message': 'test by Dia Kurosawa'}
         return Response(response, status=status.HTTP_200_OK)
 
     def post(self, request, format=None):
@@ -45,8 +45,8 @@ class ChatViewDelete(APIView):
     def delete(self, request, id, format=None):
         chat = self.get_object(id)
         chat.chat_hidden=True
-        chat.save(update_fields=["chat_hidden"])
-        response = "mensaje eliminado"
+        chat.save(update_fields=['chat_hidden'])
+        response = 'mensaje eliminado'
         return Response(response, status=status.HTTP_204_NO_CONTENT) 
 
 
