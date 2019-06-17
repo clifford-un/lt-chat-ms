@@ -1,15 +1,15 @@
-version: '2.1'
+version: '3'
 
 services:
-    ltdb:
-      image: mongo:4
-      ports:
-        - "27017:27017"
-    web:
-      build: .
+    lt-chat-ms:
+      image: cliffordun/lt-chat-ms
       command: python manage.py runserver 0:8000
-
       ports:
         - "8000:8000"
-      links:
-        - ltdb
+      depends_on:
+        - lt-chat-db
+
+  lt-chat-db:
+      image: mongo:4
+      ports:
+        - "8001:27017"
