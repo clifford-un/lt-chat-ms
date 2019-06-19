@@ -26,7 +26,7 @@ SECRET_KEY = ')!f_za8f%#08khdf_-62kiwm%wel9di@i&xss$2^=0v39+g7t8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.99.101', '192.168.99.102', 'localhost']
+ALLOWED_HOSTS = ['lt-chat-ms', 'localhost']
 
 
 # Application definition
@@ -121,6 +121,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MONGO_DATABASE_NAME = 'lt_chat'
-MONGO_HOST = "ltdb"
+MONGO_HOST = "lt-chat-db"
 MONGO_PORT = 27017
 connect(host=MONGO_HOST)
