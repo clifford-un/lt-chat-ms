@@ -26,7 +26,7 @@ SECRET_KEY = ')!f_za8f%#08khdf_-62kiwm%wel9di@i&xss$2^=0v39+g7t8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lt-chat-ms', 'localhost']
+ALLOWED_HOSTS = ['lt-chat-ms', 'localhost', 'lb-lt-chat-ms']
 
 
 # Application definition
