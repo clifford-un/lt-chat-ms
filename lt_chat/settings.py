@@ -121,6 +121,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MONGO_DATABASE_NAME = 'lt_chat'
-MONGO_HOST = "lt-chat-db-2"
+MONGO_HOST = "kwii-lt-chat-db-2"
 MONGO_PORT = 27017
 connect(host=MONGO_HOST)
